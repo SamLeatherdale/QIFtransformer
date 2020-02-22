@@ -1,0 +1,15 @@
+{
+    "name": "sam/qifwriter",
+    "description": "Write transactions to QIF files.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Sam Leatherdale",
+            "email": "SamLeatherdale@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "mimographix/qif-library": "^1.0",
+        "ulrichsg/getopt-php": "^3.3"
+    }
+}
