@@ -16,7 +16,7 @@ class CitiCreditTransformer extends BaseTransformer {
         $this->override_year = $opts['year'] ?? null;
     }
 
-    public function transform(string $data): array {
+    protected function getTransactions(string $data): array {
         $lines = explode(PHP_EOL, $data);
         $map = array_map(function(string $line, $i) {
             $transaction = new Transaction(Types::CCARD);

@@ -32,8 +32,13 @@ class Runner {
             Option::create('y', 'year', GetOpt::REQUIRED_ARGUMENT)
                 ->setValidation('is_numeric')
                 ->setDescription('For supported transformers, override year for input files without year info.'),
+            Option::create('d', 'date', GetOpt::REQUIRED_ARGUMENT)
+				->setValidation('date_create')
+				->setDescription('Only output transactions occuring after this date.'),
             Option::create('o', 'output', GetOpt::REQUIRED_ARGUMENT)
-                ->setDescription('Write output .qif file to this filename.')
+                ->setDescription('Write output .qif file to this filename.'),
+			Option::create('v', 'verbose', GetOpt::NO_ARGUMENT)
+				->setDescription('Print debug output.')
         ]);
 
         try {

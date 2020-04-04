@@ -9,7 +9,7 @@ use MimoGraphix\QIF\Enums\Types;
 use MimoGraphix\QIF\Transaction;
 
 class KoganCreditTransformer extends BaseTransformer {
-    public function transform(string $data): array {
+    protected function getTransactions(string $data): array {
         $json = json_decode($data);
 
         return array_map(static function($t) {
@@ -29,6 +29,6 @@ class KoganCreditTransformer extends BaseTransformer {
                 ->setDate(new Carbon($t->transactionDate))
                 ->setDescription(self::cleanDescription($t->transactionDescription));
             return $transaction;
-        }, $json->transactions);
+        }, $json);
     }
 }
