@@ -11,6 +11,10 @@ use MimoGraphix\QIF\Transaction;
 class KoganCreditTransformer extends BaseTransformer {
     protected function getTransactions(string $data): array {
         $json = json_decode($data);
+        $transactions = $json;
+        if (isset($json->transactions)) {
+            $transactions = $json->transactions;
+        }
 
         return array_map(static function($t) {
             /**
@@ -29,6 +33,6 @@ class KoganCreditTransformer extends BaseTransformer {
                 ->setDate(new Carbon($t->transactionDate))
                 ->setDescription(self::cleanDescription($t->transactionDescription));
             return $transaction;
-        }, $json);
+        }, $transactions);
     }
 }
